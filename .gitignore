@@ -1,1 +1,4 @@
 ACL/pdf/*.pdf
+
+.obsidian
+.obsidian/**
