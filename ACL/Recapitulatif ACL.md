@@ -1,8 +1,13 @@
-# Recapitulatif ACL
-
 **Sommaire :**
 
-[TOC]
+- **[[#Design patterns|Design patterns]]**
+	- **[[#Design patterns#Définition :|Définition :]]**
+	- **[[#Design patterns#Type de patrons :|Type de patrons :]]**
+		- **[[#Type de patrons :#Patrons Structurel :|Patrons Structurel :]]**
+		- **[[#Type de patrons :#Patrons créationnel :|Patrons créationnel :]]**
+		- **[[#Type de patrons :#Comportemental :|Comportemental :]]**
+- **[[#Conception de l'architecture|Conception de l'architecture]]**
+	- **[[#Conception de l'architecture#Patterns Architecturaux :|Patterns Architecturaux :]]**
 
 
 **PDF résumés :** 
