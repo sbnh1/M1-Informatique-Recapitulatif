@@ -57,3 +57,6 @@ Si on a trouvé l'optimal (où une solution réalisable) depuis le Primal, on pe
 
 ## Lecture du tableau du primal pour obtenir l'optimal du dual
 Si je souhaite trouver la valeur optimal du dual, et que j'ai déjà fait le simplexe sur le primal, alors les valeurs optimal des variables du duals sont les valeurs opposées des variables d'écarts dans le tableau (Ligne Z). 
+
+## Théorème de la dualité forte
+Si le primal ou le dual possède une solution optimale faisable, alors les deux en possède une, et leurs valeurs optimales sont égales. 
