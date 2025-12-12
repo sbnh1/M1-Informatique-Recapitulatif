@@ -65,7 +65,7 @@ Tour problème linéaire (appelé Primal (P)) a un problème linéaire associé 
 	- Elle est aussi liée aux relations d’écarts complémentaires (ou relations d’exclusions).
 # V. Post-Optimalité et Sensibilité
 Étudier comment la solution optimale change lorsque les paramètres du problèmes (second membre b ou coefficients de coût c) varient.
-1. **Variation des Seconds Memebre (b)**
+1. **Variation des Seconds Membre (b)**
 	- Déterminer l’intervalle dans lequel un second membre $b_i$ peut varier **sans que la base optimale change.**
 	- La valeur Optimale Z* évolue linéairement avec $b_i$ dans cet intervalle, le **prix dual** (ou coût réduit de la variable d’écart associée) donnant le taux de variation de Z* par rapport à $b_i$ (valeur marginale d’une ressource).
 2. **Variation des Coefficients de Coût (c)**

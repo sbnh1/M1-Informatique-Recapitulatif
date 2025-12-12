@@ -5,3 +5,5 @@ ACL/pdf/*.pdf
 
 .obsidian
 .obsidian/**
+
+.idea

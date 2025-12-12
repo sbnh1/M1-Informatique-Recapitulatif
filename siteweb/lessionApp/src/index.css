@@ -1,0 +1,129 @@
+:root{
+    background: url("./assets/blurry-gradient-haikei.svg") no-repeat center center fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+/* Centrage global */
+.music-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    padding: 20px;
+}
+
+/* Carte */
+.card {
+    background: #ffffff10;
+    backdrop-filter: blur(6px);
+    border: 1px solid #ffffff20;
+    border-radius: 16px;
+    padding: 30px;
+    width: 420px;
+    max-width: 95%;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.4);
+    color: white;
+    animation: fadeIn 0.4s ease;
+}
+
+/* Parole */
+.lyric-line pre {
+    font-family: "Georgia", serif;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #00000030;
+    border-radius: 8px;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* Input */
+.answer-input {
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background: #ffffffdd;
+    color: #333;
+    transition: box-shadow 0.2s ease;
+}
+
+.input-container{
+    padding-left: 10px;
+}
+
+.answer-input:focus {
+    box-shadow: 0 0 6px #00b4ff;
+}
+
+/* Bouton */
+.check-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #00aaff;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.check-btn:hover {
+    background: #0088dd;
+    transform: translateY(-2px);
+}
+
+.check-btn:active {
+    transform: translateY(0);
+}
+
+/* Alerte */
+.alert {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #ffffff15;
+    border: 1px solid #ffffff30;
+    animation: slideUp 0.3s ease;
+    position: relative;
+}
+
+.alert h4 {
+    margin: 0 0 12px 0;
+}
+
+.alert .close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border: none;
+    font-size: 20px;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.85; }
+    50%      { opacity: 1; }
+}
