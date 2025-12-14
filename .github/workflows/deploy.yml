@@ -1,13 +1,13 @@
-name: Build Vite site (gh-pages)
+name: Deploy Vite React to gh-pages
 
 on:
   push:
     branches:
-      - gh-pages
+      - main   # code source
   workflow_dispatch:
 
 jobs:
-  build:
+  build-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,9 +20,15 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        working-directory: siteweb/lessionApp
+        working-directory: siteweb/lessonApp
         run: npm ci
 
-      - name: Build Vite project
-        working-directory: siteweb/lessionApp
+      - name: Build project
+        working-directory: siteweb/lessonApp
         run: npm run build
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: siteweb/lessonApp/dist
