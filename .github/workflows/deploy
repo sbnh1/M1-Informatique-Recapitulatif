@@ -1,0 +1,32 @@
+name: Deploy Vite to GitHub Pages
+
+on:
+  push:
+    branches:
+      - gh-pages  # ou la branche que tu utilises
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        working-directory: ./siteweb/lessonApp
+        run: npm install
+
+      - name: Build project
+        working-directory: ./siteweb/lessonApp
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: siteweb/lessonApp/dist
