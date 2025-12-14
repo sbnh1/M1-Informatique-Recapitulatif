@@ -1,32 +1,28 @@
-name: Deploy Vite to GitHub Pages
+name: Build Vite site (gh-pages)
 
 on:
   push:
     branches:
-      - gh-pages  # ou la branche que tu utilises
+      - gh-pages
+  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
       - name: Install dependencies
-        working-directory: ./siteweb/lessonApp
-        run: npm install
+        working-directory: siteweb/lessonApp
+        run: npm ci
 
-      - name: Build project
-        working-directory: ./siteweb/lessonApp
+      - name: Build Vite project
+        working-directory: siteweb/lessonApp
         run: npm run build
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: siteweb/lessonApp/dist
