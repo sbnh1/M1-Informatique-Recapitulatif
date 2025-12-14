@@ -14,9 +14,11 @@ export default function FileReader({ fileNames = [] }) {
             try {
                 const allContents = await Promise.all(
                     fileNames.map(fileName =>
-                        fetch(`/notes/${fileName}`).then(res => res.text())
+                        fetch(`/M1-Informatique-Recapitulatif/notes/${fileName}`).then(res => res.text())
                     )
                 );
+                console.log(allContents);
+
 
                 // Stockage brut (optionnel)
                 setContents(allContents);
@@ -25,7 +27,7 @@ export default function FileReader({ fileNames = [] }) {
                 setListesLines(extractListesLines(fileNames, allContents));
 
             } catch (err) {
-                console.error(err);
+                console.error('error', err);
             }
         }
 
@@ -85,6 +87,13 @@ export default function FileReader({ fileNames = [] }) {
         }
     }
 
+    function reload() {
+        setValue("");
+        setShowNext(false);
+        setShowAnswer(false);
+        setRandomedLineIndex(randomInt(0, listesLines.length - 1));
+    }
+
     function next() {
         setValue("");
         setShowNext(false);
@@ -111,6 +120,14 @@ export default function FileReader({ fileNames = [] }) {
         };
     }, [verifyInput, next]);
 
+    useEffect(() => {
+        if ("speechSynthesis" in window) {
+            window.speechSynthesis.onvoiceschanged = () => {
+                window.speechSynthesis.getVoices();
+            };
+        }
+    }, []);
+
 
     return (
         <div className="music-container">
@@ -120,6 +137,46 @@ export default function FileReader({ fileNames = [] }) {
                     <>
                         <div className="lyric-line">
                             <pre>{listesLines[randomedLineIndex].line}</pre>
+                            <button
+                                className="tts-btn"
+                                onClick={() => {
+                                    if (!("speechSynthesis" in window)) {
+                                        console.warn("Speech Synthesis non supportée");
+                                        return;
+                                    }
+
+                                    const text = listesLines[randomedLineIndex]?.line;
+                                    if (!text) {
+                                        console.warn("Texte vide");
+                                        return;
+                                    }
+
+                                    // Créer l'utterance
+                                    const utter = new SpeechSynthesisUtterance(text);
+                                    utter.lang = "en-US";
+                                    utter.rate = 1;   // vitesse (0.1 → 10)
+                                    utter.pitch = 1;  // tonalité (0 → 2)
+                                    utter.volume = 1; // volume (0 → 1)
+
+                                    // Sélection d'une voix (Chromium les charge correctement)
+                                    const voices = window.speechSynthesis.getVoices();
+                                    if (voices.length > 0) {
+                                        utter.voice =
+                                            voices.find(v => v.lang === "en-US" && v.name.includes("Google"))
+                                            || voices.find(v => v.lang === "en-US")
+                                            || voices[0];
+                                    }
+
+                                    // Stoppe une lecture en cours et lance la nouvelle
+                                    window.speechSynthesis.cancel();
+                                    window.speechSynthesis.speak(utter);
+                                }}
+                                aria-label="Lire le texte à voix haute"
+                                title="Lire à voix haute"
+                            >
+                                🔊
+                            </button>
+
                         </div>
 
                         {/* 🔥 Ici on affiche le fichier d’origine */}
@@ -139,6 +196,7 @@ export default function FileReader({ fileNames = [] }) {
                         placeholder="Tape le texte ici..."
                         onChange={(e) => setValue(e.target.value)}
                     />
+                    <button className={"reloadbtn"} onClick={() => reload()}>Reload</button>
                 </div>
 
                 {!showAnswer && !showNext && (

@@ -13,6 +13,7 @@ const Menu = ({ items = [], update }) => {
                                 name="files"
                                 value={item.file}
                                 onChange={(e) => update(item.id)}
+                                checked={item.checked}
                             />
                             {item.file}
                         </label>

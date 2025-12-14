@@ -6,7 +6,7 @@ import Menu from "./Views/components/Menu.jsx";
 function App() {
 
     const [listesFiles, setListesFiles] = useState([
-        { id: 0, file: "Can\'tHelpFallingInLove.md", checked: false },
+        { id: 0, file: "Can\'tHelpFallingInLove.md", checked: true },
         { id: 1, file: "EnolaGay.md", checked: false },
         { id: 2, file: "IfICould.md", checked: false },
         { id: 3, file: "IfIWereABoy.md", checked: false },
