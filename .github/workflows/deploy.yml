@@ -3,7 +3,7 @@ name: Build Vite site (gh-pages)
 on:
   push:
     branches:
-      - Cours/Master
+      - Cours/master
   workflow_dispatch:
 
 jobs:
