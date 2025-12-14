@@ -27,7 +27,7 @@ jobs:
         working-directory: siteweb/lessionApp
         run: npm run build
       
-      - name: Deploy to gh-pages
+      - name: Deploy onto gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
