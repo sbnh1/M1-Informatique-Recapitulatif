@@ -20,15 +20,15 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        working-directory: siteweb/lessionApp
+        working-directory: siteweb/lessonApp
         run: npm ci
 
       - name: Build Vite project
-        working-directory: siteweb/lessionApp
+        working-directory: siteweb/lessonApp
         run: npm run build
       
       - name: Deploy onto gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GH_PAT }}
-          publish_dir: siteweb/lessionApp/dist
+          publish_dir: siteweb/lessonApp/dist
