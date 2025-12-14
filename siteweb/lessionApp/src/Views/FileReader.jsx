@@ -136,7 +136,7 @@ export default function FileReader({ fileNames = [] }) {
                 {listesLines.length > 0 && (
                     <>
                         <div className="lyric-line">
-                            <pre>{listesLines[randomedLineIndex].line}</pre>
+                    
                             <button
                                 className="tts-btn"
                                 onClick={() => {
