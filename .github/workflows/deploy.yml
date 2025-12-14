@@ -20,9 +20,9 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        working-directory: siteweb/lessonApp
+        working-directory: siteweb/lessionApp
         run: npm ci
 
       - name: Build Vite project
-        working-directory: siteweb/lessonApp
+        working-directory: siteweb/lessionApp
         run: npm run build
