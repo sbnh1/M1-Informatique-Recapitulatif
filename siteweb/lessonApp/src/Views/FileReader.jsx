@@ -91,7 +91,8 @@ export default function FileReader({ fileNames = [] }) {
         setValue("");
         setShowNext(false);
         setShowAnswer(false);
-        setRandomedLineIndex(randomInt(0, listesLines.length - 1));
+        setRandomedLineIndex(randomInt(0, listesLines.length - 1))
+        listenText(listesLines[randomedLineIndex].line);
     }
 
     function next() {
@@ -99,11 +100,9 @@ export default function FileReader({ fileNames = [] }) {
         setShowNext(false);
         setShowAnswer(false);
         setRandomedLineIndex(randomInt(0, listesLines.length - 1));
+        listenText(listesLines[randomedLineIndex].line);
     }
 
-    useEffect(() => {
-        listenText(listesLines[randomedLineIndex].line);
-    }, [ randomedLineIndex ]);
 
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -124,13 +123,12 @@ export default function FileReader({ fileNames = [] }) {
         };
     }, [verifyInput, next]);
 
-    function listenText(text) {
+    function listenText(texte) {
         if (!("speechSynthesis" in window)) {
             console.warn("Speech Synthesis non supportée");
             return;
         }
 
-        const texte = listesLines[randomedLineIndex]?.line;
         if (!texte) {
             console.warn("Texte vide");
             return;
