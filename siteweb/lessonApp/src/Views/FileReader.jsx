@@ -92,7 +92,6 @@ export default function FileReader({ fileNames = [] }) {
         setShowNext(false);
         setShowAnswer(false);
         setRandomedLineIndex(randomInt(0, listesLines.length - 1))
-        listenText(listesLines[randomedLineIndex].line);
     }
 
     function next() {
@@ -100,7 +99,6 @@ export default function FileReader({ fileNames = [] }) {
         setShowNext(false);
         setShowAnswer(false);
         setRandomedLineIndex(randomInt(0, listesLines.length - 1));
-        listenText(listesLines[randomedLineIndex].line);
     }
 
 
