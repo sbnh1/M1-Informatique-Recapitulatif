@@ -138,7 +138,7 @@ export default function FileReader({ fileNames = [] }) {
                         <div className="lyric-line">
                     
                             <button
-                                className="tts-btn"
+                                className="reloadbtn"
                                 onClick={() => {
                                     if (!("speechSynthesis" in window)) {
                                         console.warn("Speech Synthesis non supportée");
@@ -174,7 +174,7 @@ export default function FileReader({ fileNames = [] }) {
                                 aria-label="Lire le texte à voix haute"
                                 title="Lire à voix haute"
                             >
-                                🔊
+                                Ecouter
                             </button>
 
                         </div>
