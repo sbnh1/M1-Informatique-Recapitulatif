@@ -102,6 +102,10 @@ export default function FileReader({ fileNames = [] }) {
     }
 
     useEffect(() => {
+        listenText(listesLines[randomedLineIndex].line);
+    }, [ randomedLineIndex ]);
+
+    useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === "Enter") {
                 if (showAnswer || showNext) {
@@ -203,7 +207,6 @@ export default function FileReader({ fileNames = [] }) {
                     />
                     <button className={"reloadbtn"} onClick={() => {
                         reload();
-                        listenText(listesLines[randomedLineIndex].line);
                     }}>Reload</button>
                 </div>
 
