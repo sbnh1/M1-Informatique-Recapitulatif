@@ -120,6 +120,40 @@ export default function FileReader({ fileNames = [] }) {
         };
     }, [verifyInput, next]);
 
+    function listenText(text) {
+        if (!("speechSynthesis" in window)) {
+            console.warn("Speech Synthesis non supportée");
+            return;
+        }
+
+        const texte = listesLines[randomedLineIndex]?.line;
+        if (!texte) {
+            console.warn("Texte vide");
+            return;
+        }
+
+        // Créer l'utterance
+        const utter = new SpeechSynthesisUtterance(texte);
+        utter.lang = "en-US";
+        utter.rate = 1;   // vitesse (0.1 → 10)
+        utter.pitch = 1;  // tonalité (0 → 2)
+        utter.volume = 1; // volume (0 → 1)
+
+        // Sélection d'une voix (Chromium les charge correctement)
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length > 0) {
+            utter.voice =
+                voices.find(v => v.lang === "en-US" && v.name.includes("Google"))
+                || voices.find(v => v.lang === "en-US")
+                || voices[0];
+        }
+
+        // Stoppe une lecture en cours et lance la nouvelle
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(utter);
+    }
+
+
     useEffect(() => {
         if ("speechSynthesis" in window) {
             window.speechSynthesis.onvoiceschanged = () => {
@@ -140,37 +174,8 @@ export default function FileReader({ fileNames = [] }) {
                             <button
                                 className="reloadbtn"
                                 onClick={() => {
-                                    if (!("speechSynthesis" in window)) {
-                                        console.warn("Speech Synthesis non supportée");
-                                        return;
-                                    }
-
-                                    const text = listesLines[randomedLineIndex]?.line;
-                                    if (!text) {
-                                        console.warn("Texte vide");
-                                        return;
-                                    }
-
-                                    // Créer l'utterance
-                                    const utter = new SpeechSynthesisUtterance(text);
-                                    utter.lang = "en-US";
-                                    utter.rate = 1;   // vitesse (0.1 → 10)
-                                    utter.pitch = 1;  // tonalité (0 → 2)
-                                    utter.volume = 1; // volume (0 → 1)
-
-                                    // Sélection d'une voix (Chromium les charge correctement)
-                                    const voices = window.speechSynthesis.getVoices();
-                                    if (voices.length > 0) {
-                                        utter.voice =
-                                            voices.find(v => v.lang === "en-US" && v.name.includes("Google"))
-                                            || voices.find(v => v.lang === "en-US")
-                                            || voices[0];
-                                    }
-
-                                    // Stoppe une lecture en cours et lance la nouvelle
-                                    window.speechSynthesis.cancel();
-                                    window.speechSynthesis.speak(utter);
-                                }}
+                                   listenText(listesLines[randomedLineIndex].line);}
+                                }
                                 aria-label="Lire le texte à voix haute"
                                 title="Lire à voix haute"
                             >
@@ -196,7 +201,10 @@ export default function FileReader({ fileNames = [] }) {
                         placeholder="Tape le texte ici..."
                         onChange={(e) => setValue(e.target.value)}
                     />
-                    <button className={"reloadbtn"} onClick={() => reload()}>Reload</button>
+                    <button className={"reloadbtn"} onClick={() => {
+                        reload();
+                        listenText(listesLines[randomedLineIndex].line);
+                    }}>Reload</button>
                 </div>
 
                 {!showAnswer && !showNext && (
