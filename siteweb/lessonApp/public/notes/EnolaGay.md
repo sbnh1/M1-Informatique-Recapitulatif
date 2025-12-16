@@ -9,31 +9,19 @@ The feeling and the way you lied
 
 These games you play  
 They're gonna end in more than tears some day  
-Ah-ha, Enola Gay  
 It shouldn't ever have to end this way  
 
 It's 8:15  
 And that's the time that it's always been  
 We got your message on the radio  
 Conditions normal and you're coming home  
-
-Enola Gay  
+ 
 Is mother proud of little boy today?  
-Ah-ha, this kiss you give  
-It's never ever going to fade away  
 
-Enola Gay  
-It shouldn't ever have to end this way  
-Ah-ha, Enola Gay  
+It shouldn't ever have to end this way
 It shouldn't fade in our dreams away  
 
-It's 8:15  
-And that's the time that it's always been  
-We got your message on the radio  
-Conditions normal and you're coming home  
 
-Enola Gay  
-Is mother proud of little boy today?  
 Ah-ha, this kiss you give  
 It's never ever going to fade away 
 

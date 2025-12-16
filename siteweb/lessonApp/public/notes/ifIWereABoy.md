@@ -23,7 +23,6 @@ When you lose the one you wanted
 'Cause he's taken you for granted  
 And everything you had got destroyed 
 
-If I were a boy  
 I would turn off my phone  
 Tell everyone it's broken  
 So they'd think that I was sleepin' alone  
@@ -33,7 +32,6 @@ And make the rules as I go
 'Cause I know that she'd be faithful  
 Waitin' for me to come home, to come home  
 
-If I were a boy  
 I think I could understand  
 How it feels to love a girl  
 I swear I'd be a better man  
